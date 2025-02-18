@@ -6,7 +6,7 @@ def liste_medias(request):
     dvds = DVD.objects.all()
     cds = CD.objects.all()
     jeux = JeuDePlateau.objects.all()
-    return render(request, 'gestion/liste_medias.html', {
+    return render(request, 'gestion/list_medias.html', {
         'livres': livres, 'dvds': dvds, 'cds': cds, 'jeux': jeux
     })
 
