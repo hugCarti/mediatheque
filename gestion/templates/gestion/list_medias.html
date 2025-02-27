@@ -1,0 +1,20 @@
+{% extends 'gestion/base.html' %}
+
+{% block content %}
+<h2>Liste des Médias</h2>
+<ul>
+    {% for livre in livres %}
+        <li>{{ livre.name }} (Livre) - {{ livre.auteur }}</li>
+    {% endfor %}
+    {% for dvd in dvds %}
+        <li>{{ dvd.name }} (DVD) - {{ dvd.realisateur }}</li>
+    {% endfor %}
+    {% for cd in cds %}
+        <li>{{ cd.name }} (CD) - {{ cd.artiste }}</li>
+    {% endfor %}
+    {% for jeu in jeux %}
+        <li>{{ jeu.name }} (Jeu de Plateau) - {{ jeu.createur }}</li>
+    {% endfor %}
+</ul>
+<a href="{% url 'creat_loan' %}">Créer un emprunt</a>
+{% endblock %}

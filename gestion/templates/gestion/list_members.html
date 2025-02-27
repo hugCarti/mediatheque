@@ -1,0 +1,11 @@
+{% extends 'gestion/base.html' %}
+
+{% block content %}
+<h2>Liste des Membres</h2>
+<ul>
+    {% for member in members %}
+        <li>{{ membre.name }}</li>
+    {% endfor %}
+</ul>
+<a href="{% url 'creat_member' %}">Créer un membre</a>
+{% endblock %}

@@ -1,13 +1,15 @@
 from django.test import TestCase
-from .models import Livre, Membre
+from .models import Member, Livre, Emprunt
 
-class TestModels(TestCase):
-    def test_creation_livre(self):
-        livre = Livre.objects.create(name="1984", auteur="George Orwell", disponible=True)
-        self.assertEqual(livre.name, "1984")
-        self.assertTrue(livre.disponible)
-
+class MemberTestCase(TestCase):
     def test_creation_membre(self):
-        membre = Membre.objects.create(name="Jean Dupont")
-        self.assertEqual(membre.name, "Jean Dupont")
-        self.assertFalse(membre.bloque)
+        member = Member.objects.create(name="Jean Dupont")
+        self.assertEqual(member.name, "Jean Dupont")
+
+class LoanTestCase(TestCase):
+    def test_emprunt(self):
+        member = Member.objects.create(name="Jean Dupont")
+        livre = Livre.objects.create(name="Le Petit Prince", auteur="Antoine de Saint-Exupéry")
+        emprunt = Emprunt.objects.create(media=livre, member=member)
+        self.assertEqual(emprunt.member.name, "Jean Dupont")
+        self.assertEqual(emprunt.media.name, "Le Petit Prince")
